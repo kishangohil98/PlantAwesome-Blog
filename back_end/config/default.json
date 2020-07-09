@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://kishan159:kishan159@blogproject-sr2pl.mongodb.net/account?retryWrites=true&w=majority",
+  "jwtSecretkey": "jagdish"
+}
