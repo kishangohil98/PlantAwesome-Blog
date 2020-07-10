@@ -1,4 +1,4 @@
 {
-  "mongoURI": "add_mongoDB_URI",
-  "jwtSecretkey": "add_any_secreat_word"
+  "mongoURI": "mongodb+srv://kishan159:kishan159@blogproject-sr2pl.mongodb.net/account?retryWrites=true&w=majority",
+  "jwtSecretkey": "jagdish"
 }
