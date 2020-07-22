@@ -6,9 +6,11 @@
   "scripts": {
     "start": "node server",
     "server": "nodemon server ",
+    "build": "npm run build --prefix front_end",
+    "install-client": "npm install --prefix front_end",
     "client": "npm start --prefix front_end",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix front_end && npm run build --prefix front_end"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run install-client && npm run build"
   },
   "author": "Kishan Gohil",
   "license": "ISC",
