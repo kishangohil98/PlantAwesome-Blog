@@ -1,0 +1,15 @@
+.postBlogHeader {
+  background-image: url(../images/postblog.jpg);
+  background-size: cover;
+  background-repeat: no-repeat, repeat;
+  background-position: center;
+  margin-bottom: 0 !important;
+}
+.header {
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 5 40px #000000;
+}
+.imageParallax {
+  padding: 5rem 3rem;
+}

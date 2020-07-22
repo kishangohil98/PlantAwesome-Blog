@@ -1,0 +1,43 @@
+.navBar {
+  background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+  /* background-color: #13aa52; */
+}
+.navBrandText {
+  font-size: 24px;
+}
+
+.navBrandText .first {
+  font-family: "MuseoModerno";
+}
+.navBrandText .second {
+  color: #304633;
+  text-decoration: underline;
+  font-family: "Permanent Marker", cursive;
+}
+.navButton {
+  color: #fff !important;
+  font-weight: bold;
+  font-family: "Nunito", sans-serif;
+  transition: all ease 0.1s;
+}
+.navButton:hover {
+  /* border-bottom: #fff solid 4px; */
+  font-size: 17px;
+  border-bottom: 2px solid #fff;
+}
+.active {
+  border-bottom: 2px solid #fff;
+}
+.logo {
+  transition: all ease 0.4s;
+}
+.logo:hover {
+  font-size: 26px;
+}
+/* .logButton {
+  font-weight: bold;
+  font-family: "Nunito", sans-serif;
+  transition: all ease 0.1s;
+  color: #3cba92 !important;
+  background-color: #fff;
+} */
