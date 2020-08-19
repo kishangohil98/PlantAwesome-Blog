@@ -18,9 +18,10 @@ app.use("/api/post", require("./routes/post"));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("front_end/build"));
+  //console.log("fr called");
 
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "front_end", "build", "index.html"));
+    res.sendFile(path.join(__dirname, "front_end", "build", "index.html"));
   });
 }
 
