@@ -13,6 +13,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link, Redirect } from "react-router-dom";
 import { login } from "../actions/auth";
+import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
@@ -64,7 +65,7 @@ function SignIn({ login, isAuthenticated }) {
   const onChange = (e) => {
     setformData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value.trim(),
     });
   };
 
@@ -89,36 +90,42 @@ function SignIn({ login, isAuthenticated }) {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form
+
+          <ValidatorForm
             className={classes.form}
-            noValidate
-            onSubmit={(e) => onSubmit(e)}>
-            <TextField
+            onSubmit={(e) => onSubmit(e)}
+            onError={(errors) => console.log(errors)}>
+            <TextValidator
+              label="Email Address"
+              onChange={(e) => onChange(e)}
+              name="email"
+              id="email"
+              value={email}
               variant="standard"
               margin="normal"
-              required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
               autoComplete="email"
               autoFocus
               value={formData.email}
-              onChange={(e) => onChange(e)}
+              validators={["required", "isEmail"]}
+              errorMessages={["this field is required", "email is not valid"]}
             />
-            <TextField
-              variant="standard"
-              margin="normal"
-              required
-              fullWidth
+            <TextValidator
+              label="Password"
               name="password"
               label="Password"
               type="password"
               id="password"
+              variant="standard"
+              margin="normal"
+              fullWidth
+              validators={["required"]}
+              errorMessages={["this field is required"]}
               autoComplete="current-password"
               onChange={(e) => onChange(e)}
               value={formData.password}
             />
+
             <Button
               type="submit"
               fullWidth
@@ -132,7 +139,7 @@ function SignIn({ login, isAuthenticated }) {
                 {"Don't have an account? Sign Up"}
               </Link>
             </Box>
-          </form>
+          </ValidatorForm>
         </div>
       </ThemeProvider>
     </Container>

@@ -15,6 +15,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getMyPosts } from "../actions/post";
 import MyPostItem from "../components/MyPostItem";
 import Button from "@material-ui/core/Button";
+import Footer from "../components/Footer";
 import { useHistory } from "react-router-dom";
 import WOW from "wow.js";
 
@@ -40,6 +41,7 @@ const avtarBgcolor = () => {
 const useStyles = makeStyles((theme) => ({
   mainBackground: {
     backgroundImage: "linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%)",
+    paddingBottom: "30px",
   },
   large: {
     width: theme.spacing(7),
@@ -159,6 +161,7 @@ const Mycontent = ({
           )}
         </Container>
       </div>
+      <Footer />
     </Fragment>
   );
 };

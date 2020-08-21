@@ -56,7 +56,6 @@ const Navigation = ({
       <Navbar
         fixed="top"
         sticky="top"
-        collapseOnSelect
         expand="lg"
         className="navBar"
         variant="dark">

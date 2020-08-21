@@ -13,6 +13,7 @@ import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { register } from "../actions/auth";
+import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
@@ -65,7 +66,7 @@ function Register({ register, isAuthenticated }) {
   const onChange = (e) => {
     setformData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value.trim(),
     });
   };
 
@@ -90,63 +91,74 @@ function Register({ register, isAuthenticated }) {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <form
+          <ValidatorForm
             className={classes.form}
-            noValidate
-            onSubmit={(e) => onSubmit(e)}>
+            onSubmit={(e) => onSubmit(e)}
+            onError={(errors) => console.log(errors)}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
-                <TextField
+                <TextValidator
                   autoComplete="fname"
                   name="firstname"
                   variant="standard"
-                  required
+                  label="First Name"
                   fullWidth
                   id="firstName"
-                  label="First Name"
                   autoFocus
                   onChange={(e) => onChange(e)}
                   value={formData.firstname}
+                  validators={["required"]}
+                  errorMessages={["this field is required"]}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField
-                  variant="standard"
-                  required
-                  fullWidth
-                  id="lastname"
-                  label="Last Name"
-                  name="lastname"
+                <TextValidator
                   autoComplete="lname"
+                  name="lastname"
+                  variant="standard"
+                  label="Last Name"
+                  fullWidth
+                  id="lastName"
                   value={formData.lastname}
                   onChange={(e) => onChange(e)}
+                  validators={["required"]}
+                  errorMessages={["this field is required"]}
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
-                  variant="standard"
-                  required
-                  fullWidth
-                  id="email"
+                <TextValidator
                   label="Email Address"
-                  name="email"
-                  value={formData.email}
-                  autoComplete="email"
                   onChange={(e) => onChange(e)}
+                  name="email"
+                  id="email"
+                  value={email}
+                  variant="standard"
+                  margin="normal"
+                  fullWidth
+                  autoComplete="email"
+                  value={formData.email}
+                  validators={["required", "isEmail"]}
+                  errorMessages={[
+                    "this field is required",
+                    "email is not valid",
+                  ]}
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
-                  variant="standard"
-                  required
-                  fullWidth
+                <TextValidator
+                  label="Password"
                   name="password"
                   label="Password"
                   type="password"
                   id="password"
-                  value={formData.password}
+                  variant="standard"
+                  margin="normal"
+                  fullWidth
+                  validators={["required"]}
+                  errorMessages={["this field is required"]}
                   autoComplete="current-password"
                   onChange={(e) => onChange(e)}
+                  value={formData.password}
                 />
               </Grid>
             </Grid>
@@ -165,7 +177,7 @@ function Register({ register, isAuthenticated }) {
                 </Link>
               </Grid>
             </Grid>
-          </form>
+          </ValidatorForm>
         </div>
       </ThemeProvider>
     </Container>

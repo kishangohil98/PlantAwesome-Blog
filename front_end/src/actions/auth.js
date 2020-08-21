@@ -53,12 +53,12 @@ export const register = ({ firstname, lastname, email, password }) => async (
 
     dispatch(loadUser());
     dispatch(setAlert("Registeration Successful", "success"));
-
   } catch (err) {
     dispatch({
       type: REGISTER_FAIL,
       payload: err,
     });
+    dispatch(setAlert("Registration Fail", "danger"));
   }
 };
 
@@ -86,6 +86,8 @@ export const login = (email, password) => async (dispatch) => {
       type: LOGIN_FAIL,
       payload: err,
     });
+    dispatch(setAlert("Please enter Registered Email & Password", "danger"));
+    console.log(err);
   }
 };
 

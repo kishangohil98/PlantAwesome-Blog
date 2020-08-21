@@ -12,7 +12,7 @@ router.get("/", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");
 
-    res.json(user)  ;
+    res.json(user);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
@@ -35,6 +35,7 @@ router.post(
     const { email, password } = req.body;
     console.log("Login, Auth post called");
     try {
+      // let trimEmail = email.trim();
       let user = await User.findOne({ email });
 
       if (!user) {

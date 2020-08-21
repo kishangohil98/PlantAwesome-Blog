@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import Spinner from "../components/Spinner";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import Footer from "../components/Footer";
 import { getPosts, postAgain } from "../actions/post";
 import Container from "@material-ui/core/Container";
 import PictureHeader from "../components/PictureHeader";
@@ -16,6 +17,7 @@ const theme = createMuiTheme();
 const useStyles = makeStyles({
   mainBackground: {
     backgroundImage: "linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%)",
+    paddingBottom: "30px",
   },
   mainHeader: {
     color: "#0ba360",
@@ -79,6 +81,7 @@ const Home = ({
           </div>
         </Container>
       </div>
+      <Footer />
     </Fragment>
   );
 };
